@@ -1,0 +1,28 @@
+### BUSCO for AMI install ##########################################################
+###   Configured for Ubuntu 16.04 ##################################################
+####################################################################################
+
+#all of the usual pkg installs
+#host terminal
+sudo git clone https://gitlab.com/ezlab/busco.git
+cd busco
+sudo python setup.py install
+
+#client terminal
+scp -i /Users/lincoln.harris/Documents/20-AWS_basics/Lincoln.harris-1.pem -r /Users/lincoln.harris/myWork/19-busco-master/mammalia_odb9 ubuntu@ec2-34-213-56-97.us-west-2.compute.amazonaws.com:~
+
+scp -i /Users/lincoln.harris/Documents/20-AWS_basics/Lincoln.harris-1.pem /Users/lincoln.harris/myWork/16-trinity/Trinity.fasta ubuntu@ec2-34-213-56-97.us-west-2.compute.amazonaws.com:~
+
+scp -i /Users/lincoln.harris/Documents/20-AWS_basics/Lincoln.harris-1.pem -r /Users/lincoln.harris/myWork/20-hmmer/hmmer-3.1b2-linux-intel-x86_64 ubuntu@ec2-34-213-56-97.us-west-2.compute.amazonaws.com:~
+
+scp -i /Users/lincoln.harris/Documents/20-AWS_basics/Lincoln.harris-1.pem /Users/lincoln.harris/myWork/22-blast/ncbi-blast-2.6.0+ ubuntu@ec2-34-213-56-97.us-west-2.compute.amazonaws.com:~
+
+#host terminal
+cd busco/
+cp config/config.ini.default config/config.ini
+vi config/config.ini 
+#path to HMMsearch executable
+path = /home/ubuntu/myVol/hmmer/binaries
+
+#host terminal
+sudo python scripts/run_BUSCO.py -i Trinity-GG.fasta -o myOut.txt -l mammalia_odb9/ -m tran

@@ -1,0 +1,28 @@
+###How to mount a new volume to an AMI instance#####################################
+###Configured for Ubuntu 16.04 AMI##################################################
+####################################################################################
+####################################################################################
+
+#after volume has been attached via web console:
+#list available block devices
+lsblk
+
+#check to see if volume is empty or not
+sudo file -s /dev/xvdf
+#should return: ‘/dev/xvdf: data’
+
+#format the volume filesystem
+sudo mkfs -t ext4 /dev/xvdf
+
+#make a new root directory to store volume
+sudo mkdir /myVolume
+
+#mount the volume
+sudo mount /dev/xvdf /myVolume/
+
+cd /myVolume/
+
+#display available disk space in new volume
+df -h .
+
+mount —make-rshared /dev/xvdf myVol 

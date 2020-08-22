@@ -1,0 +1,86 @@
+
+##########################################################################
+##########################################################################
+jupyter_remote_config.txt
+4.4.18
+
+instructions for configuring jupyter notebook to run on a VM, via 
+port forwarding. 
+
+##########################################################################
+##########################################################################
+
+# dwld anaconda to the instance
+wget https://repo.continuum.io/archive/Anaconda3-4.2.0-Linux-x86_64.sh
+
+# install anaconda
+bash Anaconda3-4.2.0-Linux-x86_64.sh
+	ENTER to confirm location
+	'yes' to prepend install location to path
+
+# check that anaconda is in the preferred environment
+which python
+	/home/ubuntu/anaconda3/bin/python
+
+# create a password for jupyter notebook
+ipython
+from IPython.lib import passwd
+passwd()
+	make sure to grab keypair!!
+exit
+
+# create config profile
+jupyter notebook --generate-config
+
+# create certificates for https
+mkdir jupyterCerts
+cd jupyterCerts
+sudo openssl req -x509 -nodes -days 365 -newkey rsa:1024 -keyout mycert.pem -out mycert.pem
+	answer questions
+
+# configure jupyter
+cd ~/.jupyter/
+vi jupyter_notebook_config.py
+	add the following chunk: 
+
+	////////////////////////////////////////////////////////////
+	c = get_config()
+
+	# Kernel config
+	c.IPKernelApp.pylab = 'inline'  # if you want plotting support always in your notebook
+
+	# Notebook config
+	c.NotebookApp.certfile = u'/home/ubuntu/certs/mycert.pem' #location of your certificate file
+	c.NotebookApp.ip = '*'
+	c.NotebookApp.open_browser = False  #so that the ipython notebook does not opens up a browser by default
+	c.NotebookApp.password = u'sha1:98ff0e580111:12798c72623a6eecd54b51c006b1050f0ac1a62d'  #the encrypted password we generated above
+	# Set the port to 8888, the port we set up in the AWS EC2 set-up
+	c.NotebookApp.port = 8888
+	////////////////////////////////////////////////////////////
+
+ESC + 'wq'
+
+# exit ssh session
+
+# login to new session with the following: 
+ssh -i /Users/lincoln.harris/AWS_config_and_installs/Lincoln.harris-1.pem -L 8157:127.0.0.1:8888 ubuntu@ec2-###-##-##-###.compute-1.amazonaws.com
+
+# start the jupyter server
+jupyter notebook
+
+# navigate to 
+	https://127.0.0.1:8157
+
+# edit away!!
+
+*** if local port (8157) is busy: 
+# check
+lsof -ti:8157
+
+# kill process
+lsof -ti:8157 | xargs kill -9
+
+	you should be able to proceed as normal after this 
+
+##########################################################################
+##########################################################################

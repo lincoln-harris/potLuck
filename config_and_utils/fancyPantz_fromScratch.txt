@@ -1,0 +1,43 @@
+###How to set up FancyPantz assembler ##############################################
+###Configured for Ubuntu 16.04 AMI #################################################
+####################################################################################
+####################################################################################
+###10.16.17
+###This shit works!!!
+
+sudo apt-get update
+sudo apt install make
+sudo apt install g++
+sudo apt install gcc
+sudo apt-get install libboost—all-dev
+sudo apt-get upgrade
+
+git clone https://github.com/kislyuk/aegea.git
+
+from local machine: 
+scp -i /Users/lincoln.harris/Documents/20-AWS_basics/Lincoln.harris-1.pem -r /Users/lincoln.harris/Desktop/04-zlib/ ubuntu@ec2-52-10-118-61.us-west-2.compute.amazonaws.com:~
+
+cd 04-zlib/
+./configure
+make
+sudo make install
+
+sudo apt-get update; sudo apt-get install build-essential python3-{pip,dev,cffi} libffi-dev libssl-dev moreutils
+
+sudo apt install awscli
+aws configure
+	AWS Access Key ID: AKIAJQKMCMIPLT3GD4IA
+	AWS Secret Access Key: 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
+	Default region name: us-west-2
+	Default output format: .txt	
+
+sudo apt-get install python-pip
+sudo pip install coverage
+sudo pip install flake8
+pip install --upgrade pip
+sudo pip install pytest
+sudo pip install pytest-cov
+
+cd aegea
+sudo make
+sudo make install

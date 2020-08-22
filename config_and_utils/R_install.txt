@@ -1,0 +1,48 @@
+####################################################################################
+### How to configure Seurat  #######################################################
+### Configured for Ubuntu 16.04 AMI ################################################
+####################################################################################
+####################################################################################
+
+
+sudo apt-get update
+sudo apt-get install r-base r-base-dev
+sudo apt-get upgrade -y
+
+#install R dependencies….not all of these are essential, but some are
+sudo apt-get install build-essential
+sudo apt-get install fort77
+sudo apt-get install xorg-dev
+sudo apt-get install liblzma-dev  libblas-dev gfortran
+sudo apt-get install gcc-multilib
+sudo apt-get install gobjc++
+sudo apt-get install aptitude
+sudo aptitude install libreadline-dev
+sudo aptitude install libcurl4-openssl-dev
+sudo apt-get install default-jdk
+sudo apt-get install texlive-latex-base
+sudo apt-get install libcairo2-dev 
+
+#install latest R dist. 
+wget https://cran.r-project.org/src/base/R-3/R-3.4.0.tar.gz
+#untar, unzip…
+cd R-3.4.0/
+./configure
+make
+sudo make install
+
+#launch R
+sudo -i R
+
+install.packages(“openssl”)
+install.packages(“igraph”)
+install.packages(“httr”)
+install.packages(“diffusionMap”)
+install.packages(“plotly”)
+
+sudo apt-get install libxml2-dev
+sudo apt-get install libssl-dev
+
+#launch R
+install.packages(“Seurat”)
+library(Seurat)

@@ -1,0 +1,54 @@
+
+##########################################################################################
+##########################################################################################
+
+# general
+	sudo apt-get update
+
+# conda install
+	wget https://repo.continuum.io/archive/Anaconda2-5.0.1-Linux-x86_64.sh
+	sudo bash Anaconda2-5.0.1-Linux-x86_64.sh
+
+# sublime remote install
+	sudo wget -O /usr/local/bin/rsub \
+	https://raw.github.com/aurora/rmate/master/rmate
+	sudo chmod a+x /usr/local/bin/rsub
+
+# STAR install
+	sudo apt install rna-star
+	git clone https://github.com/alexdobin/STAR.git
+	cd STAR/source
+	make
+	added to ~/.bashrc:
+		export PATH="/home/ubuntu/STAR/bin/Linux_x86_64:$PATH"
+
+# bowtie install
+	push the latest release up to instance:
+		bowtie2-2.3.4-linux-x86_64
+	add to ~/.bashrc:
+		export PATH=$PATH:/home/ubuntu/bowtie2-2.3.4-linux-x86_64
+
+# Trinity install
+	sudo apt install samtools
+	git clone https://github.com/trinityrnaseq/trinityrnaseq.git
+	cd trinityrnaseq-Trinity-v2.4.0/
+	make
+	make install
+	added to ~/.bashrc:
+		export TRINITY_HOME=/usr/local/bin/trinityrnaseq-Trinity-v2.5.1
+	run via: 
+		$TRINITY_HOME/Trinity
+
+# Seurat install
+	from R terminal:
+		install.packages(“Seurat”)	
+		library(Seurat)   #check to see if install worked
+
+# Monocle install
+	from R terminal:
+		source("https://bioconductor.org/biocLite.R")
+		biocLite("monocle")
+		library(monocle)  #check to see if install worked
+
+##########################################################################################
+##########################################################################################

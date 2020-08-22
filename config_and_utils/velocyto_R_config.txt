@@ -1,0 +1,25 @@
+##########################################################################################
+##########################################################################################
+velocyto_R_config.txt
+1.26.18
+
+Lets try this shit again...
+##########################################################################################
+##########################################################################################
+
+Remote terminal:
+	sudo apt-get update
+	sudo apt-get install libboost-dev
+	#logout
+	#check to see if boost install worked:
+		dpkg -S /usr/include/boost/version.hpp 
+
+Remote RStudio (or maybe R console??): 
+	source("https://bioconductor.org/biocLite.R")
+	biocLite("pcaMethods")
+	library(pcaMethods)
+	library(devtools)
+	install_github("velocyto-team/velocyto.R")
+
+##########################################################################################
+##########################################################################################

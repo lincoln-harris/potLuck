@@ -1,0 +1,26 @@
+
+##########################################################################################
+##########################################################################################
+conda_ubuntu_install.txt
+1.24.18
+
+Install notes for conda on a Ubuntu (remote) instance
+
+##########################################################################################
+##########################################################################################
+
+1. From instance: 
+	wget https://repo.continuum.io/archive/Anaconda2-5.0.1-Linux-x86_64.sh
+
+2. sudo bash Anaconda2-5.0.1-Linux-x86_64.sh
+	- will probably auto install to ~/anaconda2. This is ok
+	- when prompted to add anaconda2 to .bashrc, hit YES
+
+3. cd ~/anaconda3/bin. Export wd to PATH, and check if install worked with $conda list
+
+5. Logout of instance, then back in
+
+6. Check if system-wide install worked with $conda list
+
+##########################################################################################
+##########################################################################################

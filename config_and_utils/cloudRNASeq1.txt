@@ -1,0 +1,33 @@
+### Running cloudRNAseq locally ####################################################
+####################################################################################
+####################################################################################
+
+#Pushed two .fastq.gz files to s3/biohub-spyros/data/lincTest/rawdata/D1-1000500704/
+#files need to be g-zipped!!pwd
+
+#this shit gets launched locally!!!
+
+cd /Users/lincoln.harris/myWork/27-hca/batch
+
+#can adjust number of partitions…here set to 1, but would want more with more data
+./aws_star.sh s3://biohub-spyros/data lincTest 1 mus s3://czi-hca/config/run_star_and_htseq.py > align.script
+
+cd /Users/lincoln.harris/myWork/26-cloud_rnaSeq/batch
+
+cp /Users/lincoln.harris/myWork/27-hca/batch/align.script ./
+
+chmod 777 align.script
+
+#should run it
+#will tell you your job id
+./align.script
+	or
+source align.script
+
+#can monitor progress
+aegea batch watch <job_id>
+
+#for troubleshooting
+aegea batch describe <job_id>
+
+

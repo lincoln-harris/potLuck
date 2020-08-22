@@ -1,0 +1,34 @@
+
+#####################################################################
+#####################################################################
+docker_config_ubuntu.txt
+5.2.18
+
+Config file for configuring docker to run on a Ubuntu16.04 AWS VM
+	(here run on fineFeatherMicroraptor)
+
+#####################################################################
+#####################################################################
+
+$ sudo apt-get update
+$ sudo apt-get install apt-transport-https ca-certificates curl software-properties-common
+$ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+$ sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+
+$ sudo apt-get update
+$ sudo apt-get install docker-ce
+
+Logout of instance and then back in
+
+Verify the installation
+$ sudo docker run hello-world
+
+So that you dont have to use 'sudo' everytime you run something
+$ sudo service docker start
+$ sudo usermod -a -G docker ec2-user
+
+Logout, then back in 
+$ docker info
+
+#####################################################################
+#####################################################################

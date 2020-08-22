@@ -1,0 +1,32 @@
+#####################################################################
+#####################################################################
+rJava_install.txt
+5.11.18
+
+Instructions for (re)installing everything Java related for R, on my
+Ubuntu16.04 VM
+Was doing this to try and resolve the 'max number of loaded DLLs' 
+issue I was seeing, but so far no luck. 
+#####################################################################
+#####################################################################
+
+# remove things first i guess
+sudo apt-get remove default-jre
+sudo apt-get remove default-jdk
+
+# and then re-install
+sudo apt-get install default-jre
+sudo apt-get install default-jdk
+
+# associate JDK with R
+sudo R CMD javareconf
+
+# install RJava and Rgdal
+sudo apt-get install r-cran-rjava
+sudo apt-get install libgdal1-dev libproj-dev
+
+# install package in RStudio
+install.packages("rJava")
+
+#####################################################################
+#####################################################################

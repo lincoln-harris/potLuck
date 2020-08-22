@@ -1,0 +1,35 @@
+##Trinity install################################################################
+##Configured for basic Amazon Linux AMI##########################################
+################################################################################# 
+################################################################################# 
+
+#check AMI OS type
+lsb_release -a
+
+#clean that shit
+sudo apt-get autoclean
+
+#clean all of that shit
+sudo apt-get clean
+
+#install ruby…duh
+sudo apt install ruby
+
+#install Linuxbrew, using ruby & curl
+ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install)"
+
+#exporting Linuxbrew to PATH here
+test -d ~/.linuxbrew && PATH="$HOME/.linuxbrew/bin:$PATH"
+
+#test PATH
+echo $PATH
+
+#testing basic brew functionality
+brew install hello
+
+#install linux compiler
+brew install gcc
+
+#install Trinity, along with dependencies, from brew library!!
+brew install homebrew/science/trinity
+

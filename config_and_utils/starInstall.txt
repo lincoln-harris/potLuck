@@ -1,0 +1,33 @@
+###STAR align Install###############################################################
+###Configured for Ubuntu 16.04 AMI##################################################
+####################################################################################
+####################################################################################
+
+sudo apt-get update
+
+sudo apt install make
+
+sudo apt install gcc
+
+sudo apt install g++
+
+Cd ..
+
+cd zlib
+
+./configure
+
+make
+
+sudo make install
+
+git clone https://github.com/alexdobin/STAR.git
+
+cd STAR/
+
+cd source/
+
+make
+
+
+

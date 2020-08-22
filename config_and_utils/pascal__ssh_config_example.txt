@@ -1,0 +1,10 @@
+Host ygg
+  HostName yggdrasil.sund.root.ku.dk
+  User timshel
+  RemoteForward 12121 localhost:52698
+  
+### *ALTERNATIVE REMOTE PORT FORWARDING* ###
+Host ygg-p1
+  HostName yggdrasil.sund.root.ku.dk
+  User timshel
+  RemoteForward 24242 localhost:52698

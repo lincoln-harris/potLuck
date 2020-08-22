@@ -1,0 +1,50 @@
+###Trinity Install##################################################################
+###Configured for Ubuntu 16.04 AMI##################################################
+####################################################################################
+####################################################################################
+
+git clone https://github.com/trinityrnaseq/trinityrnaseq.git
+
+git clone https://github.com/madler/zlib.git
+
+sudo apt-get update
+
+sudo apt-get upgrade -y 
+
+sudo apt install make
+
+sudo apt-get install gcc
+
+sudo apt-get install g++
+
+#compression library needed for Trinity
+cd zlib
+
+./configure
+
+make
+
+sudo make install
+
+cd trinityrnaseq-Trinity-v2.4.0/
+
+make
+
+make plugins
+
+#bowtie is a Trinity dependency
+sudo apt-get install bowtie2
+
+java --version
+
+#need to install java run-time environment
+sudo apt install default-jre
+
+cd sample_data/test_Trinity_Assembly/
+
+#Trinity run test
+./runMe.sh
+
+#sample Trinity run
+./Trinity --seqType fq --left E1-1000500803-zsGreen-1__N278Barcode_716-515_S85_R1_001.fastq --right E1-1000500803-zsGreen-1__N278Barcode_716-515_S85_R2_001.fastq --CPU 6 --max_memory 20G
+

@@ -1,0 +1,40 @@
+
+##########################################################################################
+##########################################################################################
+sublime_remote_install.txt
+1.25.18
+
+Notes on how to use port forwarding to run Sublime locally to edit files on a remote
+instance. 
+##########################################################################################
+##########################################################################################
+
+1. On local computer: Open Sublime and open package manager (Ctrl-Shift-P).
+	- Scroll down to Package Control: Install Package
+	- search rSub. Click to install
+	- search rmate. Click to install
+
+2. On local computer: add
+
+	Host *
+  		RemoteForward 52698 127.0.0.1:52698
+
+To /Users/lincoln.harris/.ssh/config. Might need to create the file
+	- restart local computer
+
+3. On remote server: 
+	sudo wget -O /usr/local/bin/rsub \
+	https://raw.github.com/aurora/rmate/master/rmate
+	sudo chmod a+x /usr/local/bin/rsub
+	
+	- restart remote server
+
+4. On local computer: open up Sublime3
+
+5. On remote server: 
+	rsub myfile.txt
+
+6. Edit away!
+
+##########################################################################################
+##########################################################################################

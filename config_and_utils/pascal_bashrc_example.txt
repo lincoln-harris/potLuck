@@ -1,0 +1,9 @@
+#### rsub ALIAS - 2015-12-14
+# INSPIRATION: alias blah='function _blah(){ echo "First: $1"; echo "Second: $2"; };_blah'
+# KEY POINT: the SEMI-COLONS and SPACES are IMPORTANT!
+# PT NOT July 2017: You do not need to make this a "alias function" because rsub only accepts one argument anyways.
+alias rsup_test='function _rsup(){ echo "argument1: [$1]"; echo "argument2: [$2]"; echo "expand list of command line arguments: [$*]"; }; _rsup' # TESTING by printing
+alias rsup0='function _rsup(){ rsub -p 52698 $*; }; _rsup' # standard port is 52698
+alias rsup='function _rsup(){ rsub -p 12121 $*; }; _rsup' # some port #1... 
+alias rsup1='function _rsup(){ rsub -p 24242 $*; }; _rsup' # some port #2...
+

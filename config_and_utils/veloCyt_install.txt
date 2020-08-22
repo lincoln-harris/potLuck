@@ -1,0 +1,43 @@
+##########################################################################################
+##########################################################################################
+# veloCyt_scratch.txt
+# 1.31.18
+# 
+# Trying to install Velocyto (http://velocyto.org) R implementation on an Ubuntu16.04 AMI
+##########################################################################################
+##########################################################################################
+
+Community AMIs > RStudio-1.0.153_R-3.4.1_Julia-0.6.0_ubuntu-16.04-LTS-64bit
+Configure Security Group > sg-dff1a8a3 lincoln-rstudio
+
+$ sudo apt-get update -y 
+$ sudo apt-get install libboost-all-dev -y
+$ sudo apt-get install libomp-dev -y
+
+logout # is this necessary??
+
+# check to see if boost install worked:
+$ dpkg -S /usr/include/boost/version.hpp
+
+$ sudo R
+> source("https://bioconductor.org/biocLite.R")
+> biocLite("pcaMethods")
+> biocLite("Rsamtools")
+> biocLite("GenomicAlignments")
+> library(pcaMethods)
+> library(devtools)
+> install_github("velocyto-team/velocyto.R")
+> install.packages("Rtsne")
+> install.packages("igraph")
+
+# load library to test if installed correctly
+> library(velocyto.R)
+
+# and other dependent libraries
+> library(Rtsne)
+> library(igraph)
+> library(Rsamtools)
+> library(GenomicAlignments)
+
+##########################################################################################
+##########################################################################################

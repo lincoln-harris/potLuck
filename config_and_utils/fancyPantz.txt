@@ -1,0 +1,14 @@
+###How to set up FancyPantz assembler ##############################################
+###Configured for Ubuntu 16.04 AMI #################################################
+####################################################################################
+####################################################################################
+
+scp cziRna1.so & linc_runBasic.py
+
+sudo apt-get update
+sudo apt install make
+sudo apt install g++
+sudo apt install gcc
+sudo apt-get install libboost—all-dev
+
+

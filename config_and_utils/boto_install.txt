@@ -1,0 +1,18 @@
+##########################################################################################
+##########################################################################################
+boto_install.txt
+1.29.18
+
+Hopefully this module will let me run aws commands from a python script. Install was complicated by the fact that with pip, python packages install to python2.7 by default. Pip3 is a command that allows you to install python packages directly to python3. 
+
+##########################################################################################
+##########################################################################################
+sudo apt install python3-setuptools
+sudo easy_install3 pip
+sudo pip3 install boto3
+
+$python3
+>>> import boto3
+
+##########################################################################################
+##########################################################################################

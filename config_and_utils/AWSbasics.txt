@@ -1,0 +1,19 @@
+## AWS basics####################################################################
+## ALL OF THESE CMDS NEED TO BE DONE FROM CLIENT TERMINAL########################
+#################################################################################
+
+#give r/w file permissions to .pem key-pair file
+chmod 400 /Users/lincoln.harris/Documents/20-AWS_basics/Lincolnharris-1.pem.txt
+
+#login to instance
+ssh -i /Users/lincoln.harris/Documents/20-AWS_basics/Lincoln.harris-1.pem ubuntu@ec2-34-211-26-157.us-west-2.compute.amazonaws.com
+
+#copy files to instance
+scp -i /Users/lincoln.harris/Documents/20-AWS_basics/Lincolnharris-1.pem.txt /Users/lincoln.harris/Documents/21-fancyPantz/linc_runBasic.py ubuntu@ec2-34-211-26-157.us-west-2.compute.amazonaws.com:~
+
+#copy files from instance back to local machine
+scp -i /Users/lincoln.harris/Documents/20-AWS_basics/Lincolnharris-1.pem.txt 
+ubuntu@ec2-34-210-171-74.us-west-2.compute.amazonaws.com:~/trinity/trinityrnaseq-Trinity-v2.4.0/trinity_out_dir/Trinity.fasta ./Trinity.fasta
+Trinity.fasta
+
+scp -i /Users/lincoln.harris/Documents/20-AWS_basics/Lincoln.harris-1.pem -r ubuntu@ec2-34-214-88-13.us-west-2.compute.amazonaws.com://home/ubuntu/myVol/fancyPantz/run1 /Users/lincoln.harris/Desktop/
